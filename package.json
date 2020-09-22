@@ -1,0 +1,25 @@
+{
+  "name": "viz_covid",
+  "version": "1.0.0",
+  "main": "datos_covid.js",
+  "description": "Proyecto de contador de noticias por día",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit"
+  },
+  "keywords": [
+    "covid",
+    "csv",
+    "news"
+  ],
+  "author": "Cristian Acuña",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3",
+    "csv-writer": "^1.6.0"
+  },
+  "devDependencies": {
+    "twitter": "^1.7.1"
+  }
+}
