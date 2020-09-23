@@ -17,13 +17,19 @@ var client = new Twitter({
 });
 
 // Se obtienen los datos desde la API
-client.get('search/tweets', { q: 'fase 1' })
+client.get('search/tweets', { q: 'pokemon go', count: 50 })
 .then(function (tweets) {
 
         // Al funcionar correctamente, desplegar el resultado
         // y luego generar el CSV de salida
         console.log("*********** Twits obtenidos ***********");
-        console.log(tweets);
+        console.log(tweets.statuses.length);
+
+        console.log("*********** Twit en posición 10 ***********");
+        console.log(tweets.statuses[10]);
+        console.log("*********** Texto de Twit en posición 10 ***********");
+        console.log(tweets.statuses[10].text);
+        console.log("****************************************************");
 
         // Generar el procesamiento de los datos
         /* Se crea una variable para llevar el contador de noticias por día,
@@ -35,16 +41,15 @@ client.get('search/tweets', { q: 'fase 1' })
         // Podemos recorrer (ejecutar varias veces el bloque de código)
         // usando de referencia la posición de "indice", comenzando en cero,
         // hasta el largo (cantidad) de elementos del arreglo.
-        for (let indice = 0; indice < tweets.length; indice++) {
-            // Se obtiene el valor del texto del elemento con clase "fecha"
+        for (let indice = 0; indice < tweets.statuses.length; indice++) {
+            // Se obtiene el valor del texto del elemento "created_at"
             // y se quitan los caracteres (espacios) que están ántes
             // y después del contenido.
-            let fecha = $(articulos[indice])
-                .find("figure .bottom .fecha") // Busca el elemento
-                .text() // extrae el texto visible en página
-                .trim(); // quita los espacios
+            let fecha_full=new Date(tweets.statuses[indice].created_at)
+            // Se obtiene la fecha en formato: "2020-9-22"
+            let fecha = fecha_full.getFullYear() + "-" + fecha_full.getMonth() + "-" + fecha_full.getDay() + " " + fecha_full.getHours()
 
-            console.log("fecha en posición " + indice, fecha);
+            // console.log("twit en posición " + indice, fecha);
 
             /* Quiero obtener una estructura de la siguiente forma, por ejemplo:
                   {
@@ -53,13 +58,16 @@ client.get('search/tweets', { q: 'fase 1' })
                       ...
                   }
                   */
-            // Se evalúa si no existe el contador para esa fecha
-            if (isNaN(noticias_dia[fecha])) {
-                // Si no existe, se crea el contador para la fecha, iniciando en 1
-                noticias_dia[fecha] = 1;
-            } else {
-                // Cuando ya existe, se aumenta el contador
-                noticias_dia[fecha] = noticias_dia[fecha] + 1;
+            // Se evalúa si un tweet contiene la palabra "game" como parte del texto
+            if(tweets.statuses[indice].text.indexOf('game') > -1){
+                // Se evalúa si no existe el contador para esa fecha
+                if (isNaN(noticias_dia[fecha])) {
+                    // Si no existe, se crea el contador para la fecha, iniciando en 1
+                    noticias_dia[fecha] = 1;
+                } else {
+                    // Cuando ya existe, se aumenta el contador
+                    noticias_dia[fecha] = noticias_dia[fecha] + 1;
+                }
             }
         }
         // Terminado el ciclo "for", tendremos una variable con la
@@ -69,8 +77,8 @@ client.get('search/tweets', { q: 'fase 1' })
           Se genera un arreglo para contener los datos procesados,
           este tendrá la siguiente estructura:
           [
-            {dia: "Sep 15", cantidad: 1},
-            {dia: "Sep 14", cantidad: 2},
+            {dia: "2020-9-22", cantidad: 15},
+            {dia: "2020-9-21", cantidad: 2},
             ...
           ]
         */
@@ -78,9 +86,9 @@ client.get('search/tweets', { q: 'fase 1' })
 
         // Se obtienen las etiquetas de días como un arreglo,
         // esto, a partir del texto del día,
-        // por ejemplo "Sep 15".
+        // por ejemplo "2020-9-22".
         // la variable día tendrá la siguiente forma:
-        // dias = ["Sep 15", "Sep 14", "Sep 13" ... ]
+        // dias = ["2020-9-22", "2020-9-22" ... ]
         let dias = Object.keys(noticias_dia);
 
         // Ya que es un arreglo, se recorren los días procesados
@@ -100,8 +108,8 @@ client.get('search/tweets', { q: 'fase 1' })
         // con la siguiente forma:
         /*
         contadores_dia = [
-            {dia: "Sep 15", cantidad: 1},
-            {dia: "Sep 14", cantidad: 2},
+            {dia: "2020-9-22", cantidad: 15},
+            {dia: "2020-9-22", cantidad: 2},
             ...
           ]    
         */
