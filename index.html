@@ -1,140 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAU - VDG (Intro)</title>
 
-    <!-- Carga de Librería Plotly -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-locale-es-latest.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAU - VDG (Intro)</title>
 
-    <!-- Librería CSS para la apariencia de la aplicación -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"
-    />
+  <!-- Carga de Librería Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-locale-es-latest.js"></script>
 
-    <!-- Archivos de la aplicación -->
-    <script src="lib/gmap.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <!-- Librería CSS para la apariencia de la aplicación -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css" />
 
-  <body>
-    <div id="layout" class="pure-g">
-      <div class="sidebar pure-u-1 pure-u-md-1-4">
-        <div class="header">
-          <h1 class="brand-title">
-           Visualización de Datos Geográficos en Internet
-          </h1>
-          <h2 class="brand-tagline">fundamentos y aplicación</h2>
+  <!-- Archivos de la aplicación -->
+  <script src="lib/gmap.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-          <nav class="nav">
-            <ul class="nav-list">
-              <li class="nav-item">
-                <a class="pure-button" href="http://codigonet.net" target="cdgn"
-                  >por Codigonet</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
+<body>
+  <div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+      <div class="header">
+        <h1 class="brand-title">
+          Visualización de Datos Geográficos en Internet
+        </h1>
+        <h2 class="brand-tagline">fundamentos y aplicación</h2>
+
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="pure-button" href="http://codigonet.net" target="cdgn">por Codigonet</a>
+            </li>
+          </ul>
+        </nav>
       </div>
+    </div>
 
-      <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-          <div class="posts">
-            <h1 class="content-subhead">Datos no espaciales</h1>
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <div>
+        <div class="posts">
+          <h1 class="content-subhead">Datos no espaciales</h1>
 
-            <!-- Población Mundial -->
-            <section class="post">
-              <header class="post-header">
-                <h2 class="post-title">Población Mundial</h2>
+          <!-- Noticias COVID -->
+          <section class="post">
+            <header class="post-header">
+              <h2 class="post-title">Noticias COVID</h2>
 
-                <p class="post-meta">
-                  Creado por
-                  <a
-                    href="https://codigonet.net"
-                    class="post-author"
-                    target="cdgn"
-                    >Cristian Acuña</a
-                  >
-                </p>
-              </header>
+              <p class="post-meta">
+                Creado por
+                <a href="https://codigonet.net" class="post-author" target="cdgn">Cristian Acuña</a>
+              </p>
+            </header>
 
-              <div class="post-description">
-                <p>
-                  El siguiente gráfico muestra la evolución de la población
-                  mundial cada 10 años. <br />
-                  Esta información no contiene indicaciones de geolocalización.
-                </p>
-                <div id="my-graph">
-                  <!-- El gráfico se dibujará en este espacio -->
-                </div>
-                <span class="post-category post-category-js">
-                  Información obtenida desde
-                  <a
-                    href="https://www.worldometers.info/world-population/world-population-by-year/"
-                    class="post-image-meta"
-                  >
-                    WorldMeters.info
-                  </a>
-                </span>
+            <div class="post-description">
+              <p>
+                El siguiente gráfico muestra la evolución de noticias relacionadas a COVID. <br />
+                Esta información no contiene indicaciones de geolocalización.
+              </p>
+              <div id="my-graph">
+                <!-- El gráfico se dibujará en este espacio -->
               </div>
-            </section>
-          </div>
+              <span class="post-category post-category-js">
+                Información obtenida desde
+                <a href="https://www.meganoticias.cl/temas/Coronavirus-en-Chile/" class="post-image-meta">
+                  https://www.meganoticias.cl/temas/Coronavirus-en-Chile/
+                </a>
+              </span>
+            </div>
+          </section>
+        </div>
 
-          <div class="posts">
-            <h1 class="content-subhead">Datos Espaciales</h1>
+        <div class="posts">
+          <h1 class="content-subhead">Datos No Espaciales</h1>
 
-            <!-- Población America Latina-->
-            <section class="post">
-              <header class="post-header">
-                <h2 class="post-title">Población América Latina</h2>
+          <!-- Variación del DóLAR-->
+          <section class="post">
+            <header class="post-header">
+              <h2 class="post-title">Variación del DóLAR</h2>
 
-                <p class="post-meta">
-                  Creado por
-                  <a
-                    href="https://codigonet.net"
-                    class="post-author"
-                    target="cdgn"
-                    >Cristian Acuña</a
-                  >
-                </p>
-              </header>
+              <p class="post-meta">
+                Creado por
+                <a href="https://codigonet.net" class="post-author" target="cdgn">Cristian Acuña</a>
+              </p>
+            </header>
 
-              <div class="post-description">
-                <p>
-                  El siguiente mapa muestra la población de 2020 en cuatro
-                  países de America Latina<br />
-                  En este caso, la información está directamente relacionada a
-                  ubicaciones geográficas.
-                </p>
-                <!--
-
-                  <div id="my-map">
-                    <-- El gráfico se dibujará en este espacio --
-                  </div>
-
-                -->
-                <span class="post-category post-category-js">
-                  Información obtenida desde
-                  <a
-                    href="https://www.worldometers.info/world-population/world-population-by-year/"
-                    class="post-image-meta"
-                  >
-                    WorldMeters.info
-                  </a>
-                </span>
+            <div class="post-description">
+              <p>
+                El siguiente gráfico muestra la variación del valor del DÓLAR<br />
+                En este caso, la información está obtenida mediante una API pública.
+              </p>
+              <div id="my-usd">
+                <!-- El gráfico se dibujará en este espacio -->
               </div>
-            </section>
-          </div>
+
+              <span class="post-category post-category-js">
+                Información obtenida desde
+                <a href="'https://mindicador.cl/api/dolar"
+                  class="post-image-meta">
+                  'https://mindicador.cl/api/dolar
+                </a>
+              </span>
+            </div>
+          </section>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
